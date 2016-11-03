@@ -137,6 +137,16 @@ def get_address(lat, lng):
     return _cut(info['display_name'])
 
 
+def get_revaddress(address):
+    """Convert address into latitude and longitude using OSM"""
+    headers = {'Accept-Language': "en-US,en;q=0.8"}
+    nom_str = "http://nominatim.openstreetmap.org/search?q={address}&format=json&polygon=1&addressdetails=1&limit=1"
+    return [(float(cobj['lat']), float(cobj['lon'])) for cobj in json.loads(requests.get(nom_str.format(address = 
+                                                                                           address),
+                            headers = headers
+                           ).text)]
+
+
 def format_lat_lng(lat, lng):
     s = ""
     if lat < 0:

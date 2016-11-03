@@ -9,7 +9,7 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
 
-RUN pip install matplotlib numpy pyproj scipy scikit-image
+RUN pip install matplotlib numpy pyproj scipy scikit-image pandas
 
 # use unreleased version until v3.3 is released
 RUN pip install -e git+https://github.com/bear/python-twitter@d3eb170881b8fa81e06d6420b94d47131e5e9699#egg=python-twitter
